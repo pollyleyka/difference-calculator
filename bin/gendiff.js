@@ -22,26 +22,26 @@ program
             const keys1 = Object.keys(data1);
             const keys2 = Object.keys(data2);
             const keys = _.union(keys1, keys2).sort();
-
-            const result = {};
+            let result = [];
             for (const key of keys) {
                 if (!Object.hasOwn(data1, key)) {
-                    result[`+ ${key}`] = _.clone(data2[key]);
+                    let added = `+ ${key}: ${data2[key]}`;
+                    result.push(added);
                 } else if (!Object.hasOwn(data2, key)) {
-                    result[`- ${key}`] = _.clone(data1[key]);
+                    let deleted = `- ${key}: ${data1[key]}`;
+                    result.push(deleted);
                 } else if (data1[key] !== data2[key]) {
-                    result[`- ${key}`] = _.clone(data1[key]);
-                    result[`+ ${key}`] = _.clone(data2[key]);
+                    let changed = `- ${key}: ${data1[key]}\n+ ${key}: ${data2[key]}`;
+                    result.push(changed);
                 } else {
-                    result[key] = _.clone(data1[key]);
+                    let unchanged = `  ${key}: ${data2[key]}`
+                    result.push(unchanged);
                 }
             }
-            console.log(result);
-            return result;
+            return `{\n${result.join('\n')}\n}`;
         };
-        const result = JSON.stringify(compare(fileData1, fileData2));
+        const result = compare(fileData1, fileData2);
         console.log(result);
-        console.log(typeof(result));
     });
 
 program.parse();
