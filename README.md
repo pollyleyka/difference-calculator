@@ -13,3 +13,4 @@ $ npm link
 Run ```gendiff```
 
 **Demonstration**:
+[![asciicast](https://asciinema.org/a/540886.svg)](https://asciinema.org/a/540886)
