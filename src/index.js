@@ -21,7 +21,7 @@ export default (filePath1, filePath2) => {
       } else if (data1[key] !== data2[key]) {
         result.push(`- ${key}: ${data1[key]}\n+ ${key}: ${data2[key]}`);
       }
-        result.push(`  ${key}: ${data2[key]}`);
+      result.push(`  ${key}: ${data2[key]}`);
     }
     return `{\n${result.join('\n')}\n}`;
   };
