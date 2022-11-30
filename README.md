@@ -4,6 +4,10 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/cd0baada2efa7fd8d25b/maintainability)](https://codeclimate.com/github/pollyleyka/frontend-project-46/maintainability)
 
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/cd0baada2efa7fd8d25b/test_coverage)](https://codeclimate.com/github/pollyleyka/frontend-project-46/test_coverage)
+
+
 ## Installation
 ```
 $ git clone https://github.com/pollyleyka/frontend-project-46.git
