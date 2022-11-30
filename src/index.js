@@ -5,7 +5,7 @@ import _ from 'lodash';
 export default (filePath1, filePath2) => {
   const files = [filePath1, filePath2];
   const [fileData1, fileData2] = files.map((filePath) => {
-    const data = fs.readFileSync(path.resolve(filePath));
+    const data = fs.readFileSync(path.resolve(filePath), 'utf-8');
     return filePath.endsWith('json') ? JSON.parse(data) : data;
   });
   const compare = (data1, data2) => {
