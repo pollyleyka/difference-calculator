@@ -22,11 +22,8 @@
   "homepage": "https://github.com/pollyleyka/frontend-project-46#readme",
   "dependencies": {
     "commander": "^9.4.1",
-    "cwd": "^0.10.0",
-    "fs": "^0.0.1-security",
-    "lodash": "^4.17.21",
-    "path": "^0.12.7",
-    "url": "^0.11.0"
+    "jest-cli": "^29.3.1",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "eslint": "^8.28.0",
