@@ -1,4 +1,4 @@
-import { parseFile } from './parsers.js';
+import parseFile from './parsers.js';
 import compare from './compare.js';
 
 export default (...files) => {

@@ -13,11 +13,11 @@ test('gendiffJSON', () => {
 test('gendiffYML', () => {
   expect(gendiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'))).toEqual(expected);
 });
-test('gendiffDif', () => {
-  expect(gendiff(getFixturePath('file1.yml'), getFixturePath('file2.json'))).toEqual(expected);
-});
 test('gendiffYAML', () => {
   expect(gendiff(getFixturePath('file1.yaml'), getFixturePath('file2.yaml'))).toEqual(expected);
+});
+test('gendiffDif', () => {
+  expect(gendiff(getFixturePath('file1.yaml'), getFixturePath('file2.json'))).toEqual(expected);
 });
 // test('gendiffEror', () => {
 //   expect(gendiff(getFixturePath('file1.js'), getFixturePath('file2.json'))).toEqual(Error);

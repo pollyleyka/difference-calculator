@@ -10,15 +10,13 @@ const parseFile = (filePath) => {
   switch (extention) {
     case '.json':
       return parseJson(filePath);
-    case ('.yml' || '.yaml'):
+    case ('.yml'):
+      return parseYml(filePath);
+    case ('.yaml'):
       return parseYml(filePath);
     default:
-      return console.log('default');
+      throw new Error(`Unknown operator: '${extention}'!`);
   }
 };
 
-export {
-  parseJson,
-  parseYml,
-  parseFile,
-};
+export default parseFile;
