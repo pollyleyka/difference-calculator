@@ -7,7 +7,7 @@ program
   .description('Compares two configuration files and shows a difference.')
   .version('0.1.0')
   .argument('<filePath1>')
-  .argument('<filePath1>')
+  .argument('<filePath2>')
   .helpOption(true, 'output usage information')
   .option('-f, --format < type >', 'output format')
   .action(gendiff);

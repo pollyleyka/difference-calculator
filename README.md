@@ -5,8 +5,6 @@
 
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/cd0baada2efa7fd8d25b/maintainability)](https://codeclimate.com/github/pollyleyka/frontend-project-46/maintainability)
-
-
 [![Test Coverage](https://api.codeclimate.com/v1/badges/cd0baada2efa7fd8d25b/test_coverage)](https://codeclimate.com/github/pollyleyka/frontend-project-46/test_coverage)
 
 
@@ -19,9 +17,14 @@ $ npm link
 ```
 
 ### Use
-Run ```gendiff```
+Run ```gendiff -h```
 
 **Demonstration**:
 
+Flat JSON
 
 [![asciicast](https://asciinema.org/a/540886.svg)](https://asciinema.org/a/540886)
+
+Flat YAML
+
+[![asciicast](https://asciinema.org/a/543159.svg)](https://asciinema.org/a/543159)

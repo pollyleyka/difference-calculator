@@ -19,6 +19,3 @@ test('gendiffYAML', () => {
 test('gendiffDif', () => {
   expect(gendiff(getFixturePath('file1.yaml'), getFixturePath('file2.json'))).toEqual(expected);
 });
-// test('gendiffEror', () => {
-//   expect(gendiff(getFixturePath('file1.js'), getFixturePath('file2.json'))).toEqual(Error);
-// });
