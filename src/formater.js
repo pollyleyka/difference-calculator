@@ -1,60 +1,53 @@
 import _ from 'lodash';
 
-const stringify = (value) => {
-  const space = '    ';
-  const count = 1;
-  const iter = (currentValue, depth = 2) => {
-    if (!_.isObject(currentValue)) {
-      return `${currentValue}`;
-    }
-
-    const indentSize = depth * count;
-    const currentIndent = space.repeat(indentSize);
-    const bracketIndent = space.repeat(indentSize - count);
-    const lines = Object
-      .entries(currentValue)
-      .map(([key, val]) => `${currentIndent}${key}: ${iter(val, (depth + 1))}`);
-
-    return [
-      '{',
-      ...lines,
-      `${bracketIndent}}`,
-    ].join('\n');
-  };
-
-  return iter(value, 1);
-};
-
 const generateOutput = (tree) => {
-  const lines = tree.map((obj) => {
-    const {
-      name,
-      type,
-      value,
-      children,
-      changedFrom,
-      changedTo,
-    } = obj;
-    switch (type) {
-      case 'added':
-        return `+ ${name}: ${stringify(value)}`;
-      case 'deleted':
-        return `- ${name}: ${stringify(value)}`;
-      case 'unchanged':
-        return `  ${name}: ${stringify(value)}`;
-      case 'changed':
-        return `- ${name}: ${stringify(changedFrom)}\n+ ${name}: ${stringify(changedTo)}`;
-      case 'withNested':
-        return `  ${name}: ${stringify(generateOutput(children))}`;
-      default:
-        throw new Error(`unexpected value ${type}`);
+  const iter = (node, iterDepth = 1) => {
+    const space = ' ';
+    let spaceCount;
+    if (iterDepth === 1) {
+      spaceCount = 'hi';
     }
-  });
-  return [
-    '{',
-    ...lines,
-    '}',
-  ].join('\n');
+    spaceCount = 4;
+    const indentSize = iterDepth * spaceCount;
+    const currentIndent = space.repeat(indentSize);
+    const bracketIndent = space.repeat(indentSize - iterDepth);
+
+    const stringify = (value, depth = 1) => {
+      if (!_.isObject(value)) {
+        return `${value}`;
+      }
+      const indentSizestr = depth * spaceCount;
+      const currentIndentstr = space.repeat(indentSizestr);
+      const bracketIndentstr = space.repeat(indentSizestr - depth);
+      const lines = Object
+        .entries(value)
+        .map(([key, val]) => `${currentIndentstr}${key}: ${stringify(val, (depth + 1))}`);
+      return ['{', ...lines, `${bracketIndentstr}}`].join('\n');
+    };
+
+    const lines = node.map((obj) => {
+      const { name, type, value, children, changedFrom, changedTo } = obj;
+      const text = `${name}: ${stringify(value)}`;
+      const oldText = `${name}: ${stringify(changedFrom)}`;
+      const newText = `${name}: ${stringify(changedTo)}`;
+      switch (type) {
+        case 'added':
+          return `${space.repeat(indentSize - 2)}+ ${text}`;
+        case 'deleted':
+          return `${space.repeat(indentSize - 2)}- ${text}`;
+        case 'unchanged':
+          return `${currentIndent}${text}`;
+        case 'changed':
+          return `${space.repeat(indentSize - 2)}- ${oldText}\n${space.repeat(indentSize - 2)}+ ${newText}`;
+        case 'withNested':
+          return `${space.repeat(indentSize - 2)}${name}: ${stringify(iter(children, iterDepth + 1), iterDepth + 1)}`;
+        default:
+          throw new Error(`unexpected value ${type}`);
+      }
+    });
+    return ['{', ...lines, `${bracketIndent}}`].join('\n');
+  };
+  return iter(tree, 1);
 };
 
 export default generateOutput;
