@@ -11,7 +11,7 @@ const value = `{
         }
         setting6: {
             doge: {
-              - wow:
+              - wow: 
               + wow: so much
             }
             key: value
@@ -22,12 +22,12 @@ const value = `{
       - baz: bas
       + baz: bars
         foo: bar
-     - nest: {
+      - nest: {
             key: value
         }
       + nest: str
     }
-  -group2: {
+  - group2: {
         abc: 12345
         deep: {
             id: 45
