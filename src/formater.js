@@ -16,7 +16,7 @@ const stringify = (value, depth) => {
   return ['{', ...lines, `${generateIndent(depth - 1)}}`].join('\n');
 };
 
-const generateOutput = (tree) => {
+const stylish = (tree) => {
   const iter = (node, iterDepth = 1) => {
     const lines = node.map((obj) => {
       const { type } = obj;
@@ -46,4 +46,4 @@ const generateOutput = (tree) => {
   return iter(tree, 1);
 };
 
-export default generateOutput;
+export default stylish;

@@ -28,3 +28,7 @@ Flat JSON
 Flat YAML
 
 [![asciicast](https://asciinema.org/a/543159.svg)](https://asciinema.org/a/543159)
+
+compare json/yaml tree
+
+[![asciicast](https://asciinema.org/a/545401.svg)](https://asciinema.org/a/545401)

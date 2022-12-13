@@ -9,7 +9,7 @@ program
   .argument('<filePath1>')
   .argument('<filePath2>')
   .helpOption(true, 'output usage information')
-  .option('-f, --format < type >', 'output format')
+  .option('-f, --format < type >', 'output format', 'stylish')
   .action(gendiff);
 
 program.parse();
