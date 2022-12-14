@@ -2,7 +2,7 @@ import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
 import parser from './parsers.js';
-import stylish from './formater.js';
+import plain from './formatters/plain.js';
 
 const getAbsPath = (filePath) => path.resolve(process.cwd(), filePath);
 const getExtension = (filePath) => path.parse(filePath).ext.slice(1);
@@ -67,7 +67,7 @@ const gendiff = (filePath1, filePath2, format = 'stylish') => {
     return treeOfDifferance;
   };
   const differanceTree = getTreeOfDifferance(tree1, tree2);
-  const output = stylish(differanceTree);
+  const output = plain(differanceTree);
   console.log(output);
   return output;
 };
