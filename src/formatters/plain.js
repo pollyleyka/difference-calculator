@@ -36,45 +36,13 @@ const plain = (tree) => {
             const newParentsName = getFullName(parentNames, name);
             return iter(children, [newParentsName]);
           }
-        // case 'unchanged':
-        //   return 1;
           default:
             throw new Error('Tree is not defined');
         }
       });
-    console.log(lines);
-    const result = `${lines.join('\n')}`;
-    console.log(result);
-    return result;
+    return `${lines.join('\n')}`;
   };
   return iter(tree);
 };
 
 export default plain;
-
-// const getPropertyName = (properties, property) => [...properties, property].join('.');
-
-// const plain2 = (node, properties) => {
-//   switch (node.type) {
-//     case 'root': {
-//       const output = node.children.flatMap((child) => plain2(child, properties));
-//       return output.join('\n');
-//     }
-//     case 'added':
-//       return `Property '${getPropertyName(properties, node.key)}' was added with value: ${stringify(node.value)}`;
-//     case 'removed':
-//       return `Property '${getPropertyName(properties, node.key)}' was removed`;
-//     case 'changed':
-//       return `Property '${getPropertyName(properties, node.key)}' was updated. From ${stringify(node.value1)} to ${stringify(node.value2)}`;
-//     case 'unchanged':
-//       return [];
-//     case 'nested': {
-//       const output = node.children.flatMap((child) => plain2(child, [...properties, node.key]));
-//       return output.join('\n');
-//     }
-//     default:
-//       throw new Error('Tree is not defined');
-//   }
-// };
-
-// const plain = (tree) => plain2(tree, []);

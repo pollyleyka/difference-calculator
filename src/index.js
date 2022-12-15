@@ -8,7 +8,7 @@ const getAbsPath = (filePath) => path.resolve(process.cwd(), filePath);
 const getExtension = (filePath) => path.parse(filePath).ext.slice(1);
 const readFile = (filePath) => fs.readFileSync(filePath, 'utf8');
 
-const gendiff = (filePath1, filePath2, format = 'stylish') => {
+const gendiff = (filePath1, filePath2) => {
   const path1 = getAbsPath(filePath1);
   const path2 = getAbsPath(filePath2);
 
