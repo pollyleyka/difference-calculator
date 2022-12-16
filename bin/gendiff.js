@@ -9,7 +9,7 @@ program
   .version('0.4.0')
   .arguments('<filePath1> <filePath2>')
   .helpOption(true, 'output usage information')
-  .option('-f, --format < type >', 'output format', 'stylish')
+  .option('-f, --format [ type ]', 'output format', 'stylish')
   .action((filePath1, filePath2) => {
     console.log(gendiff(filePath1, filePath2, program.opts().format));
   });
