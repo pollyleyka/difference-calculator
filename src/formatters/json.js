@@ -1,7 +1,2 @@
-const json = (tree) => {
-  console.log(tree);
-  const result = JSON.stringify(tree);
-  console.log(result);
-  return result;
-};
+const json = (tree) => JSON.stringify(tree);
 export default json;

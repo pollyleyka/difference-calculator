@@ -71,4 +71,3 @@ const gendiff = (filePath1, filePath2, format = 'stylish') => {
   return output;
 };
 export default gendiff;
- 
