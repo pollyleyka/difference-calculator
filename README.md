@@ -32,3 +32,7 @@ Flat YAML
 compare json/yaml tree
 
 [![asciicast](https://asciinema.org/a/545401.svg)](https://asciinema.org/a/545401)
+
+make output in different formats. Stylish is default. Plain works like this:
+
+[![asciicast](https://asciinema.org/a/546074.svg)](https://asciinema.org/a/546074)

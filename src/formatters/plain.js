@@ -15,7 +15,7 @@ const getFullName = (parentNames, name) => [...parentNames, name].join('.');
 const plain = (tree) => {
   const iter = (node, parentNames = []) => {
     const lines = node
-      .filter((value) => value.type !== 'unchanged')
+      .filter((obj) => obj.type !== 'unchanged')
       .map((obj) => {
         const { type } = obj;
         switch (type) {
