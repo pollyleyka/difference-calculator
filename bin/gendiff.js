@@ -10,6 +10,7 @@ program
   .arguments('<filePath1> <filePath2>')
   .helpOption(true, 'output usage information')
   .option('-f, --format [ type ]', 'output format', 'stylish')
+  .showHelpAfterError('(run gendiff --help for additional information)')
   .action((filePath1, filePath2) => {
     console.log(gendiff(filePath1, filePath2, program.opts().format));
   });
