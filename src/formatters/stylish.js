@@ -20,26 +20,32 @@ const stylish = (tree) => {
   const iter = (node, iterDepth = 1) => {
     const lines = node.map((obj) => {
       const { type } = obj;
-      if (type === 'added') {
-        const { name, value } = obj;
-        return `${generateIndent(iterDepth, -2)}+ ${name}: ${stringify(value, iterDepth + 1)}`;
+      switch (type) {
+        case 'added': {
+          const { name, value } = obj;
+          return `${generateIndent(iterDepth, -2)}+ ${name}: ${stringify(value, iterDepth + 1)}`;
+        }
+        case 'deleted': {
+          const { name, value } = obj;
+          return `${generateIndent(iterDepth, -2)}- ${name}: ${stringify(value, iterDepth + 1)}`;
+        }
+        case 'unchanged': {
+          const { name, value } = obj;
+          return `${generateIndent(iterDepth)}${name}: ${stringify(value, iterDepth + 1)}`;
+        }
+        case 'changed': {
+          const { name, changedFrom, changedTo } = obj;
+          const changedFromLine = `${generateIndent(iterDepth, -2)}- ${name}: ${stringify(changedFrom, iterDepth + 1)}`;
+          const changedToLine = `${generateIndent(iterDepth, -2)}+ ${name}: ${stringify(changedTo, iterDepth + 1)}`;
+          return [changedFromLine, changedToLine];
+        }
+        case 'withNested': {
+          const { name, children } = obj;
+          return `${generateIndent(iterDepth)}${name}: ${stringify(iter(children, iterDepth + 1), iterDepth + 1)}`;
+        }
+        default:
+          throw new Error('Unknown line type');
       }
-      if (type === 'deleted') {
-        const { name, value } = obj;
-        return `${generateIndent(iterDepth, -2)}- ${name}: ${stringify(value, iterDepth + 1)}`;
-      }
-      if (type === 'unchanged') {
-        const { name, value } = obj;
-        return `${generateIndent(iterDepth)}${name}: ${stringify(value, iterDepth + 1)}`;
-      }
-      if (type === 'changed') {
-        const { name, changedFrom, changedTo } = obj;
-        const changedFromLine = `${generateIndent(iterDepth, -2)}- ${name}: ${stringify(changedFrom, iterDepth + 1)}`;
-        const changedToLine = `${generateIndent(iterDepth, -2)}+ ${name}: ${stringify(changedTo, iterDepth + 1)}`;
-        return [changedFromLine, changedToLine];
-      }
-      const { name, children } = obj;
-      return `${generateIndent(iterDepth)}${name}: ${stringify(iter(children, iterDepth + 1), iterDepth + 1)}`;
     });
     return ['{', ...lines.flat(), `${generateIndent(iterDepth - 1)}}`].join('\n');
   };

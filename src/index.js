@@ -68,7 +68,7 @@ const gendiff = (filePath1, filePath2, format = 'stylish') => {
   };
   const differanceTree = getTreeOfDifferance(tree1, tree2);
   const output = getOutput(differanceTree, format);
-  console.log(output);
   return output;
 };
 export default gendiff;
+ 

@@ -10,7 +10,7 @@ program
   .helpOption(true, 'output usage information')
   .option('-f, --format < type >', 'output format', 'stylish')
   .action((filePath1, filePath2) => {
-    gendiff(filePath1, filePath2, program.opts().format);
+    console.log(gendiff(filePath1, filePath2, program.opts().format));
   });
 
 program.parse();
