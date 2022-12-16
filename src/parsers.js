@@ -12,6 +12,6 @@ export default (extension, data) => {
       return yaml.load(data);
 
     default:
-      throw new Error(`This ${extension} is not used`);
+      throw Error('This extension is not used');
   }
 };

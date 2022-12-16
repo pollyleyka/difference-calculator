@@ -7,7 +7,7 @@ const stringify = (value) => {
   if (_.isString(value)) {
     return `'${value}'`;
   }
-  return String(value);
+  return `${value}`;
 };
 
 const getFullName = (parentNames, name) => [...parentNames, name].join('.');

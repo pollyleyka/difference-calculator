@@ -9,24 +9,18 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
-test('gendiffJSON', () => {
+
+test('gendiffStylish', () => {
   expect(gendiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'stylish')).toEqual(expectedStylish);
-});
-test('gendiffYML', () => {
   expect(gendiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'))).toEqual(expectedStylish);
-});
-test('gendiffYAML', () => {
   expect(gendiff(getFixturePath('file1.yaml'), getFixturePath('file2.yaml'))).toEqual(expectedStylish);
-});
-test('gendiffDif', () => {
   expect(gendiff(getFixturePath('file1.yaml'), getFixturePath('file2.json'))).toEqual(expectedStylish);
 });
 test('gendiffPlain', () => {
   expect(gendiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'plain')).toEqual(expectedPlain);
+  expect(gendiff(getFixturePath('file1.yml'), getFixturePath('file2.yaml'), 'plain')).toEqual(expectedPlain);
 });
-test('gendiffJSONPlain', () => {
-  expect(gendiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'plain')).toEqual(expectedPlain);
-});
-test('gendiff', () => {
+test('gendiffJsont', () => {
   expect(gendiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'json')).toEqual(expectedJson);
+  expect(gendiff(getFixturePath('file1.yml'), getFixturePath('file2.yaml'), 'json')).toEqual(expectedJson);
 });

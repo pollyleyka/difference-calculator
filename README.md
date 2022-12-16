@@ -36,3 +36,7 @@ compare json/yaml tree
 make output in different formats. Stylish is default. Plain works like this:
 
 [![asciicast](https://asciinema.org/a/546074.svg)](https://asciinema.org/a/546074)
+
+show differance tree in json 
+
+[![asciicast](https://asciinema.org/a/546147.svg)](https://asciinema.org/a/546147)
