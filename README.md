@@ -11,7 +11,7 @@ For example, there are two json files. The first file represents the state befor
 - Support for different input formats: yaml, json
 - Report generation in the form of plain text, stylish and json
 _____
-## Minimum requirements
+## Requirements
 - OS - *nix like systems or customized Windows
 - The version of Node used when writing the project is v18.4.0
 - Minimum Node version >= 16.x
@@ -19,19 +19,19 @@ _____
 ## Instructions for installing and running:
 - Clone the repository with the project
 ```
-$ git clone https://github.com/pollyleyka/frontend-project-46.git
+git clone https://github.com/pollyleyka/frontend-project-46.git
 ```
 - Go to the directory with the project
 ```
-$ cd frontend-project-46/
+cd frontend-project-46/
 ```
 - Install the project dependencies 
 ```
-$ make install
+make install
 ```
 - Install the package with the utility locally
 ```
-$ npm link
+npm link
 ```
 - After installation, you can learn how to use the utility using the **gendiff** command and the **-h** flag.
 
