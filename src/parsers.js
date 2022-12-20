@@ -2,7 +2,7 @@ import yaml from 'js-yaml';
 import fs from 'fs';
 import path from 'path';
 
-const getPath = (filePath) => path.resolve(process.cwd(), filePath);
+const getFullPath = (pathToFile) => path.resolve(process.cwd(), pathToFile);
 const getExtension = (filePath) => path.parse(filePath).ext.slice(1);
 const readFile = (filePath) => fs.readFileSync(filePath, 'utf8');
 const parser = (extension, data) => {
@@ -18,5 +18,5 @@ const parser = (extension, data) => {
   }
 };
 
-const getObject = (filePath) => parser(getExtension(filePath), readFile(getPath(filePath)));
+const getObject = (filePath) => parser(getExtension(filePath), readFile(getFullPath(filePath)));
 export default getObject;
