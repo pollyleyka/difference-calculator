@@ -40,7 +40,7 @@ const stylish = (tree) => {
             const changedToLine = `${generateIndent(iterDepth, -2)}+ ${key}: ${stringify(changedTo, iterDepth + 1)}`;
             return [changedFromLine, changedToLine];
           }
-          case 'withNested': {
+          case 'nested': {
             const { key, children } = data;
             return `${generateIndent(iterDepth)}${key}: ${stringify(iter(children, iterDepth + 1), iterDepth + 1)}`;
           }

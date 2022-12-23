@@ -31,7 +31,7 @@ const plain = (tree) => {
             const { key, changedFrom, changedTo } = data;
             return `Property '${getFullName(parentNames, key)}' was updated. From ${stringify(changedFrom)} to ${stringify(changedTo)}`;
           }
-          case 'withNested': {
+          case 'nested': {
             const { key, children } = data;
             const newParentsName = getFullName(parentNames, key);
             return iter(children, [newParentsName]);
