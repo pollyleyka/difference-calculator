@@ -2,8 +2,8 @@ import stylish from './stylish.js';
 import plain from './plain.js';
 import json from './json.js';
 
-const formatter = (tree, format) => {
-  switch (format) {
+const format = (tree, formatName) => {
+  switch (formatName) {
     case 'plain':
       return plain(tree);
     case 'stylish':
@@ -11,7 +11,7 @@ const formatter = (tree, format) => {
     case 'json':
       return json(tree);
     default:
-      throw new Error(`Format name ${format} is not defined`);
+      throw new Error(`Format name ${formatName} is not defined`);
   }
 };
-export default formatter;
+export default format;

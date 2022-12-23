@@ -9,7 +9,7 @@ const parse = (data, format) => {
     case 'yaml':
       return yaml.load(data);
     default:
-      throw Error('This format is not used');
+      throw Error(`This format ${format} is not used`);
   }
 };
 
