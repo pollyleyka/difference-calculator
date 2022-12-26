@@ -4,7 +4,7 @@ import parse from './parser.js';
 import buildTree from './buildTree.js';
 import format from './formatters/index.js';
 
-const extractFormat = (pathToFile) => path.parse(pathToFile).ext.slice(1);
+const extractFormat = (pathToFile) => path.extname(pathToFile).toLowerCase().slice(1);
 
 const readFile = (pathToFile) => {
   const fullPath = path.resolve(process.cwd(), pathToFile);
