@@ -28,8 +28,8 @@ const plain = (tree) => {
             return `Property '${getFullName(parentNames, key)}' was removed`;
           }
           case 'changed': {
-            const { key, changedFrom, changedTo } = data;
-            return `Property '${getFullName(parentNames, key)}' was updated. From ${stringify(changedFrom)} to ${stringify(changedTo)}`;
+            const { key, value1, value2 } = data;
+            return `Property '${getFullName(parentNames, key)}' was updated. From ${stringify(value1)} to ${stringify(value2)}`;
           }
           case 'nested': {
             const { key, children } = data;

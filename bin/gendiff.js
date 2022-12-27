@@ -6,9 +6,9 @@ const program = new Command();
 program
   .name('gendiff')
   .version('0.4.0')
-  .arguments('<filePath1> <filePath2>')
+  .arguments('<filepath1> <filepath2>')
   .option('-f, --format [ type ]', 'output format', 'stylish')
-  .action((filePath1, filePath2) => {
-    console.log(gendiff(filePath1, filePath2, program.opts().format));
+  .action((filepath1, filepath2) => {
+    console.log(gendiff(filepath1, filepath2, program.opts().format));
   })
   .parse(process.argv);

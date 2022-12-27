@@ -8,7 +8,7 @@ import jsonResult from '../__fixtures__/expectedJson.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const getFixturePath = (filepath) => path.join(__dirname, '..', '__fixtures__', filepath);
 const testList = ['json', 'yml', 'yaml'];
 
 test.each(testList)('gendiff %s', (format) => {

@@ -1,14 +1,12 @@
 import _ from 'lodash';
 
-const isObject = (data) => _.isObject(data) && !Array.isArray(data);
-
 const buildTree = (data1, data2) => {
   const keys2 = Object.keys(data1);
   const keys1 = Object.keys(data2);
   const keys = _.sortBy(_.union(keys1, keys2));
   return keys
     .map((key) => {
-      if (!Object.hasOwn(data2, key)) {
+      if (!_.has(data2, key)) {
         return {
           key,
           type: 'deleted',
@@ -16,7 +14,7 @@ const buildTree = (data1, data2) => {
         };
       }
 
-      if (!Object.hasOwn(data1, key)) {
+      if (!_.has(data1, key)) {
         return {
           key,
           type: 'added',
@@ -24,7 +22,7 @@ const buildTree = (data1, data2) => {
         };
       }
 
-      if (isObject(data1[key]) && isObject(data2[key])) {
+      if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
         return {
           key,
           type: 'nested',
@@ -36,8 +34,8 @@ const buildTree = (data1, data2) => {
         return {
           key,
           type: 'changed',
-          changedFrom: data1[key],
-          changedTo: data2[key],
+          value1: data1[key],
+          value2: data2[key],
         };
       }
 
